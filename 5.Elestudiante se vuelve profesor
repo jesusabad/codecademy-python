@@ -1,0 +1,55 @@
+candela = {
+    "nombre": "Candela",
+    "tareas": [90.0, 97.0, 75.0, 92.0],
+    "pruebas": [88.0, 40.0, 94.0],
+    "examenes": [75.0, 90.0]
+}
+milagros = {
+    "nombre": "Milagros",
+    "tareas": [100.0, 92.0, 98.0, 100.0],
+    "pruebas": [82.0, 83.0, 91.0],
+    "examenes": [89.0, 97.0]
+}
+ramiro = {
+    "nombre": "Ramiro",
+    "tareas": [0.0, 87.0, 75.0, 22.0],
+    "pruebas": [0.0, 75.0, 78.0],
+    "examenes": [100.0, 100.0]
+}
+
+# ¡Agregá tu función acá abajo!
+def promedio(numeros):
+    total=float(sum(numeros))
+    return total/len(numeros)
+
+def sacar_promedio(alumno):
+    tareas = 0.1*promedio(alumno['tareas'])
+    pruebas = 0.3*promedio(alumno['pruebas'])
+    examenes = 0.6*promedio(alumno['examenes'])
+    return sum([tareas,pruebas,examenes])
+
+def calificaciones_con_letras(resultado):
+    if resultado>=90:
+        return 'A'
+    elif resultado>=80:
+        return 'B'
+    elif resultado>=70:
+        return 'C'
+    elif resultado>=60:
+        return 'D'
+    else:
+        return 'F'
+
+def obtener_promedio_clase(alumnos):
+    puntuaje=[]
+    for alumno in alumnos:
+        puntuaje.append(sacar_promedio(alumno))
+    return promedio(puntuaje)
+
+alumnos=[candela, milagros, ramiro]
+for elemen in alumnos:
+    print elemen['nombre']
+    print calificaciones_con_letras(sacar_promedio(elemen))
+print 'TOTAL'
+print obtener_promedio_clase(alumnos)
+print calificaciones_con_letras(sacar_promedio(candela))
